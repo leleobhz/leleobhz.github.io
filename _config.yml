@@ -2,9 +2,8 @@ title: "Um Sysadmin Cansado"
 author: "Leonardo Amaral"
 description: "Um blog cansado de um Sysadmin cansado <b style=\"color: #f45;\">&lt;3</b> by <b><a href=\"https://leleobhz.github.io\">https://leleobhz.github.io</a></b>"
 permalink: /:title/
-lang: "pt_BR"
+lang: "pt-BR"
 excerpt_separator: "\n\n\n"
-date_format: "%B %d, %Y"
 
 # Layout
 
