@@ -4,6 +4,7 @@ description: "Um blog cansado de um Sysadmin cansado <b style=\"color: #f45;\">&
 permalink: /:title/
 lang: "pt-BR"
 excerpt_separator: "\n\n\n"
+timezone: America/Sao_Paulo
 
 # Layout
 
