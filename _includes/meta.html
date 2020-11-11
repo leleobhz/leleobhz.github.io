@@ -3,5 +3,5 @@
     <div class="categories">{{ include.post.categories | join: ", "  | upcase }}</div>
   {% endif %}
   <h1><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h1>
-  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | localize: ":short" }}</time>
+  <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | localize: ":long" }}</time>
 </header>
