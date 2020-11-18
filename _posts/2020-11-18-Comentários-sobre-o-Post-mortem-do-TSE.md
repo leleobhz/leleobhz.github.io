@@ -6,7 +6,7 @@ date: 2020-11-18 11:00 -0300
 
 O TSE em [nota à imprensa](https://www.tse.jus.br/imprensa/noticias-tse/2020/Novembro/tse-divulga-nota-tecnica-sobre-o-atraso-da-totalizacao-dos-votos-no-primeiro-turno) divulgou uma nota técnica sobre o incidente do atraso no primeiro turno das eleições de 2020. Abaixo deixo uma cópia do documento no momento em que lí e minha perspectiva sobre o assunto, trecho-a-trecho. Lembrando que estas são __impressões pessoais__ e sujeitas ao que se conhece __no escopo do documento citado__ - salvo quando fato histórico citado no meio do texto.
 
-:envelope_with_arrow: [TSE-nota-tecnica-eleicoes-2020.pdf](https://github.com/leleobhz/leleobhz.github.io/files/5560645/TSE-nota-tecnica-eleicoes-2020.pdf)
+[TSE-nota-tecnica-eleicoes-2020.pdf](https://github.com/leleobhz/leleobhz.github.io/files/5560645/TSE-nota-tecnica-eleicoes-2020.pdf)
 
 1) O sistema da Oracle não é a única partícula nesta equação, segundo o próprio item "_[n]a arquitetura descentralizada, o fato de existir um banco de dados e um servidor de aplicações local em um computador em cada TRE aumenta o leque de potenciais ataques ao ambiente, que podem ser mitigados com a localização física destas máquinas no ambiente do TSE._"
 
