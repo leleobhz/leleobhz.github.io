@@ -2,7 +2,9 @@
 layout: default
 title: "Home"
 ---
-
+{% if site.google_analytics and jekyll.environment == 'production' %}
+  {% include analytics.html %}
+{% endif %}
 {% if site.show_excerpts %}
   {% include home.html %}
 {% else %}

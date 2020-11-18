@@ -20,6 +20,9 @@ dark_header: true           # always keep the header dark
 minimal: false               # use simpler style
 mathjax: true
 
+# Google Analytics
+google_analytics: G-BLSBQR741G
+
 # Menu
 
 navigation:
