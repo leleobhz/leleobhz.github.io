@@ -33,10 +33,10 @@ O TSE em [nota à imprensa](https://www.tse.jus.br/imprensa/noticias-tse/2020/No
 ## Minha conclusão:
 
 - TSE precisa aprender a fazer post-mortem. Estes são post-mortem decentes:<br/><br/>
-    - https://blog.cloudflare.com/tag/postmortem/
-    - https://github.blog/2018-10-30-oct21-post-incident-analysis/
-    - https://github.blog/2020-03-26-february-service-disruptions-post-incident-analysis/
-    - https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/
+    - [https://blog.cloudflare.com/tag/postmortem/](https://blog.cloudflare.com/tag/postmortem/)
+    - [https://github.blog/2018-10-30-oct21-post-incident-analysis/](https://github.blog/2018-10-30-oct21-post-incident-analysis/)
+    - [https://github.blog/2020-03-26-february-service-disruptions-post-incident-analysis/](https://github.blog/2020-03-26-february-service-disruptions-post-incident-analysis/)
+    - [https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/](https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/)
 
 * Meu entendimento é que se o TSE contrata o suporte da Oracle, era obrigação da Oracle fazer esta reconstrução do post-mortem. Este relatório da forma que veio mostra a má vontade política e técnica em fazer um relatório de incidentes.
 
