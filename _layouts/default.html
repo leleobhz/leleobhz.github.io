@@ -2,7 +2,7 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
 {% if site.google_analytics and jekyll.environment == 'production' %}
-  {% include analytics.html %}
+{% include analytics.html %}
 {% endif %}
 
 <title>{% if page.title %}{{ page.title | escape }} | {% endif %}{{ site.title | escape }}</title>
