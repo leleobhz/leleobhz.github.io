@@ -36,6 +36,7 @@ external:                    # see http://fontawesome.com/icons
 
 comments:
 #  disqus_shortname: ""      # see https://disqus.com/
+  disqus_shortname: "blogleonardoamaral"      # see https://disqus.com/
 #  isso_domain: ""           # see https://posativ.org/isso/
 
 plugins:
