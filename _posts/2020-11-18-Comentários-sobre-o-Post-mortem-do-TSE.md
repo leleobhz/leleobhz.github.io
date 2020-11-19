@@ -6,6 +6,7 @@ image: https://user-images.githubusercontent.com/201189/99551333-7932b200-299a-1
 categories: politica análise
 vertical: Code
 excerpt: "Uma pequena análise sobre o post mortem do TSE sobre atraso na apuração das eleições 2020 no Brasil"
+page.comments: true
 ---
 
 O TSE em [nota à imprensa](https://www.tse.jus.br/imprensa/noticias-tse/2020/Novembro/tse-divulga-nota-tecnica-sobre-o-atraso-da-totalizacao-dos-votos-no-primeiro-turno) divulgou uma nota técnica sobre o incidente do atraso no primeiro turno das eleições de 2020. Abaixo deixo uma cópia do documento no momento em que lí e minha perspectiva sobre o assunto, trecho-a-trecho. Lembrando que estas são __impressões pessoais__ e sujeitas ao que se conhece __no escopo do documento citado__ - salvo quando fato histórico citado no meio do texto.
