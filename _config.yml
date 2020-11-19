@@ -1,6 +1,6 @@
 title: "Um Sysadmin Cansado"
 author: "Leonardo Amaral"
-description: "Um blog cansado de um Sysadmin cansado <b style=\"color: #f45;\">&lt;3</b> by <b><a href=\"https://leleobhz.github.io\">https://leleobhz.github.io</a></b>"
+description: "Um blog cansado de um Sysadmin cansado <b style=\"color: #f45;\">&lt;3</b> by <b><a href=\"https://blog.leonardoamaral.com.br\">https://blog.leonardoamaral.com.br/</a></b>"
 permalink: /:title/
 lang: "pt-BR"
 excerpt_separator: "\n\n\n"
@@ -35,7 +35,6 @@ external:                    # see http://fontawesome.com/icons
   - {title: RSS, icon: rss, url: "/feed.xml"}
 
 comments:
-#  disqus_shortname: ""      # see https://disqus.com/
   disqus_shortname: "blogleonardoamaral"      # see https://disqus.com/
 #  isso_domain: ""           # see https://posativ.org/isso/
 
