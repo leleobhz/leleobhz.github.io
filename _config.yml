@@ -36,6 +36,8 @@ external:                    # see http://fontawesome.com/icons
 
 comments:
   disqus_shortname: blogleonardoamaral
+#  isso_domain: ""           # see https://posativ.org/isso/
+
 
 plugins:
  - jekyll-feed
