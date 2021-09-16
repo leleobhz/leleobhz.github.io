@@ -24,7 +24,7 @@ Em tempos de pandemia de [SARS-CoV-2](https://www.nature.com/articles/s41591-020
 
 ## O novo cartão
 
-O novo cartão me foi descrito como _"Cartão com o chip redondo"_. Descrição relativamente adequada:
+O novo cartão me foi descrito como _"Cartão com o chip redondo"_ - [descrição relativamente adequada](https://www.blogs.unicamp.br/dimensional/2009/04/29/044/):
 
 ![eCPF e cCNPJ Certisign Frente](https://user-images.githubusercontent.com/201189/133638260-67e91e98-e278-44b7-a89b-7d19607da898.jpeg)
 
@@ -86,11 +86,11 @@ Até aqui, nada demais, a versão mais atual do Safenet Authentication Client é
 
 Sobre o primeiro ítem do changelog, [who cares](https://www.thalesgroup.com/en/group/journalist/press-release/thales-completes-acquisition-gemalto-become-global-leader-digital)? Suportar versões novas de Ubuntu/RHEL/Fedora e CentOS é interessante. O IDPrime novo não faz sentido nesse caso e o Suporte a GTK3 seria muito desejado. [Mas o mundo não é flores](https://gemalto.service-now.com/csm?sys_kb_id=23404c661b4d7c90e2af520f6e4bcbc9&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=4f71c86a1b4d7c90e2af520f6e4bcb8e&sysparm_article=KB0024526).
 
-Nos resta a versão 10.7 disponível no link da [GlobalSign](https://www.globalsign.com/): (https://support.globalsign.com/ssl/ssl-certificates-installation/safenet-drivers).
+Nos resta a versão 10.7 disponível no link da [GlobalSign](https://www.globalsign.com/): <https://support.globalsign.com/ssl/ssl-certificates-installation/safenet-drivers>.
 
 ## Parte genérica da instalação: Pacotes
 
-Não abordarei aqui os procedimentos de descompressão de arquivos pós-descarga. A parte que poucos sabem aqui é como instalar adequadamente pacotes .deb e .rpm (nas versões modernas) e seguem as linhas para Fedora e Debian-based:
+Não abordarei aqui os procedimentos de descompressão de arquivos pós-descarga. A parte que poucos sabem aqui é como instalar adequadamente pacotes .deb e .rpm (nas versões modernas) e seguem as linhas de exemplo para Fedora e Debian-based:
 
 ### Fedora
 ```
@@ -116,7 +116,7 @@ No Debian, por usar em uma máquina com [muitas restrições computacionais](htt
 
 ### Fedora
 
-No Fedora com Chrome - [numa máquina mais modesta] ainda(https://gist.githubusercontent.com/leleobhz/2070efd61a54136272647055567a13f4/raw/70a69af508d1afadaba62127d3ef2455386957a0/gistfile0.txt) - a coisa fica diferente por causa do [p11-kit](https://p11-glue.github.io/p11-glue/p11-kit.html)
+No Fedora com Chrome - [numa máquina mais modesta ainda](https://gist.githubusercontent.com/leleobhz/2070efd61a54136272647055567a13f4/raw/70a69af508d1afadaba62127d3ef2455386957a0/gistfile0.txt) - a coisa fica diferente por causa do [p11-kit](https://p11-glue.github.io/p11-glue/p11-kit.html)
     
 Em geral as pessoas tem medo do diferente, então é comum ouvir reclamações de que ficou mais difícil fazer as coisas. No caso do p11-kit esse caso não se aplica - ao menos não em relação ao [caos que é adicionar módulos PKCS11 no Google Chrome](https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/).
     
@@ -150,7 +150,7 @@ E aqui talvez fique explicado o update da versão 10.8 ter citado suporte explic
 
 ### Outras distribuições (?)
 
-Acredito que qualquer distribuição que utilize o p11-kit terá o mesmo procedimento adotado no Fedora - Seja nos pacotes RPM ou nos pacotes DEB<sup name="a1">[1](#f1)</sup>.
+Acredito que qualquer distribuição que utilize o p11-kit terá o mesmo procedimento adotado no Fedora - Seja nos pacotes RPM ou nos pacotes DEB<sup id="a1">[1](#f1)</sup>.
 
 ## Considerações finais
 
