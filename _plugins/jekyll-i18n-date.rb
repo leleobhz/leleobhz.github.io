@@ -1,8 +1,6 @@
 # Taken from https://github.com/gacha/gacha.id.lv/blob/master/_plugins/i18n_filter.rb
 
 require 'i18n'
-https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale
-# Create folder "_locales" and put some locale file from https://github.com/svenfuchs/rails-i18n/tree/master/rails/locale
 module Jekyll
   # i18n filter for jekyll
   module I18nFilter
