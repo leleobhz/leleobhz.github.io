@@ -5,7 +5,10 @@ date: 2021-09-16 11:00 -0300
 categories: linux segurança token certisign
 vertical: Code
 excerpt: "Mais um capítulo da eterna briga entre usuários de Linux e usuários do ICP-Brasil com suas ACs que não gostam de suportar Linux."
-image: https://user-images.githubusercontent.com/201189/133657907-38fdcbba-b6a9-40e5-86ab-79e58c5a7325.png
+images:
+  - url: https://user-images.githubusercontent.com/201189/133657907-38fdcbba-b6a9-40e5-86ab-79e58c5a7325.png
+    alt: ICP-Brasil
+    title: ICP-Brasil
 comments: true
 ---
 

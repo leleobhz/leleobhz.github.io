@@ -5,7 +5,9 @@
     {{ post.excerpt }}
     <div class="more"><a href="{{ post.url | relative_url }}">Leia mais</a></div>
     {% assign image = post.images[0] %}
-    {% include image.html image=image %}
+    {% if image %}
+         {% include image.html image=image %}
+    {% endif %}
   </article>
 {% endfor %}
 
