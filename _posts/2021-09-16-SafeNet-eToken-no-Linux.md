@@ -1,5 +1,4 @@
 ---
-2021-09-16-SafeNet-eToken-no-Linux.md
 title: "eToken SafeNet no Linux (Fedora/Debian)"
 layout: post
 date: 2021-09-16 11:00 -0300
