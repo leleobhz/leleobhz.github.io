@@ -30,6 +30,7 @@ navigation:
 
 external:                    # see http://fontawesome.com/icons
 #  - {title: Mail, icon: envelope, url: "mailto:niklasbuschmann@users.noreply.github.com"}
+  - {title: Mastodon, icon: mastodon, url: "https://bolha.us/@pqatsi"}
   - {title: Twitter, icon: twitter, url: "https://twitter.com/pqatsi"}
   - {title: Github, icon: github, url: "https://github.com/leleobhz"}
   - {title: RSS, icon: rss, url: "/feed.xml"}
