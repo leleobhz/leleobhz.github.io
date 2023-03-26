@@ -1,10 +1,10 @@
 ---
-title: "Volume in the sky with Docker - Apertem os cintos, o container subiu!"
+title: "Volume in the sky with Docker - Apertem os cintos, o contêiner subiu!"
 layout: post
 date: 2023-03-25 23:00 -0300
-categories: docker container rclone nuvem
+categories: docker container contêiner rclone nuvem
 vertical: Code
-excerpt: "Com a possibilidade do uso de plugins de volume no Docker, o container aprende a voar pras nuvens com o rclone"
+excerpt: "Com a possibilidade do uso de plugins de volume no Docker, o contêiner aprende a voar pras nuvens com o rclone"
 images:
   - url: /assets/images/volume_in_sky.jpg
     alt: Volume in the sky
@@ -14,27 +14,27 @@ comments: true
 
 ## Introdução 
 
-[O](https://www.docker.com/company/){:target="_blank"} [mundo](https://www.docker.com/blog/inside-look-docker-captains-program/){:target="_blank"} [ama](https://news.itsfoss.com/docker-dropping-free-team-orgs/){:target="_blank"} [Docker](https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/){:target="_blank"}, não é mesmo? Existe por ai uma tonelada de alternativas a ele, inclusive [meu queridinho](https://podman.io/){:target="_blank"}. Eu devo alguns postes sobre o Podman e o ambiente de containers que não seja ambiente dev e também não seja um cluster Kubernetes inteiro e hoje eu venho fazer um pouco de justiça neste ponto.
+[O](https://www.docker.com/company/){:target="_blank"} [mundo](https://www.docker.com/blog/inside-look-docker-captains-program/){:target="_blank"} [ama](https://news.itsfoss.com/docker-dropping-free-team-orgs/){:target="_blank"} [Docker](https://www.docker.com/blog/we-apologize-we-did-a-terrible-job-announcing-the-end-of-docker-free-teams/){:target="_blank"}, não é mesmo? Existe por ai uma tonelada de alternativas a ele, inclusive [meu queridinho](https://podman.io/){:target="_blank"}. Eu devo alguns postes sobre o Podman e o ambiente de contêineres que não seja ambiente dev e também não seja um cluster Kubernetes inteiro e hoje eu venho fazer um pouco de justiça neste ponto.
 
-Muitas aplicações não precisam ser convertidas em micro-serviços e não precisam da distribuição que um ambiente distribuido tem. Ainda não precisando, podem se beneficiar de algumas comodidades dos containers, como consistência de ambiente e configuração, facilidade de operação e facilidade de recovery caso algo exploda em um ambiente de produção.
+Muitas aplicações não precisam ser convertidas em microsserviços e não precisam da distribuição que um ambiente distribuído tem. Ainda não precisando, podem se beneficiar de algumas comodidades dos contêineres, como consistência de ambiente e configuração, facilidade de operação e facilidade de recovery caso algo exploda em um ambiente de produção.
 
-Hoje apresento mais um motivo pra colocar nesta lista: A possibilidade de gerenciar automaticamente volumes remotos dentro dos containers usando [docker-volume-rclone](https://hub.docker.com/r/rclone/docker-volume-rclone){:target="_blank"}.
+Hoje apresento mais um motivo pra colocar nesta lista: A possibilidade de gerenciar automaticamente volumes remotos dentro dos contêineres usando [docker-volume-rclone](https://hub.docker.com/r/rclone/docker-volume-rclone){:target="_blank"}.
 
 ## Rclone
 
-O [Rclone é um programa de linha de comando para gerenciar arquivos em armazenamento em nuvem](https://rclone.org/#about:~:text=Rclone%20is%20a%20command%2Dline%20program%20to%20manage%20files%20on%20cloud%20storage.){:target="_blank"}. Esta auto descrição pode levantar suspeitas sobre a necessidade deste post, principalmente quando o leitor descobrir que ele é capaz de [montar volumes](https://rclone.org/commands/rclone_mount/){:target="_blank"} mas não se enganem, ainda será mais prático manter a [sintaxe habitual de volumes do Docker Compose](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes){:target="_blank"}. Aconselho a todos os aventureios nuvenauticos que se apoderem dessa ferramenta - até mesmo como substituição para [rsync](https://rclone.org/commands/rclone_sync/){:target="_blank"}/[sftp](https://rclone.org/sftp/){:target="_blank"}/[ftp](https://rclone.org/ftp/){:target="_blank"}/[mount](https://rclone.org/commands/rclone_mount/){:target="_blank"}.[cifs](https://rclone.org/smb/){:target="_blank"} e tantas outras ferramentas que temos por ai.
+O [Rclone é um programa de linha de comando para gerenciar arquivos em armazenamento em nuvem](https://rclone.org/#about:~:text=Rclone%20is%20a%20command%2Dline%20program%20to%20manage%20files%20on%20cloud%20storage.){:target="_blank"}. Esta auto descrição pode levantar suspeitas sobre a necessidade deste poste, principalmente quando o leitor descobrir que ele é capaz de [montar volumes](https://rclone.org/commands/rclone_mount/){:target="_blank"} mas não se enganem, ainda será mais prático manter a [sintaxe habitual de volumes do Docker Compose](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes){:target="_blank"}. Aconselho a todos os aventureiros nuvenáuticos que se apoderem dessa ferramenta - até mesmo como substituição para [rsync](https://rclone.org/commands/rclone_sync/){:target="_blank"}/[sftp](https://rclone.org/sftp/){:target="_blank"}/[ftp](https://rclone.org/ftp/){:target="_blank"}/[mount](https://rclone.org/commands/rclone_mount/){:target="_blank"}.[cifs](https://rclone.org/smb/){:target="_blank"} e tantas outras ferramentas que temos por ai.
 
 Aos que ainda não se convenceram do poder do Rclone, há duas ferramentas do Rclone - [hasher](https://rclone.org/hasher/){:target="_blank"} e [compress](https://rclone.org/compress/){:target="_blank"} - que podem ser aninhadas em qualquer outro endpoint (E aninhadas entre si também - como faremos adiante), adicionando algum poder a protocolos mais restritos, como o [ftp](https://rclone.org/ftp/){:target="_blank"}.
 
 ## Docker plugin
 
-O Docker tem uma plataforma de [plugins](https://docs.docker.com/engine/extend/){:target="_blank"} bem mais interessante que os [plugins do podman](https://github.com/containers/common/blob/main/docs/containers.conf.5.md#:~:text=A%20table%20of%20all%20the%20enabled%20volume%20plugins%20on%20the%20system.%20Volume%20plugins%20can%20be%20used%20as%20the%20backend%20for%20Podman%20named%20volumes.%20Individual%20plugins%20are%20specified%20below%2C%20as%20a%20map%20of%20the%20plugin%20name%20(what%20the%20plugin%20will%20be%20called)%20to%20its%20path%20(filepath%20of%20the%20plugin%27s%20unix%20socket).){:target="_blank"} em termos de facilidade de deploy de novas expansões. Não avaliei se o podman é capaz de rodar a mesma estrutura da [plugin API do Docker](https://docs.docker.com/engine/extend/plugin_api/){:target="_blank"} - deixando a sugestão ao leitor a possibilidade de buscar esta posibilidade - e quem sabe a publicar também. Esta plataforma de plugins será utilizada para __mapear em volumes Docker qualquer serviço suportado pelo Rclone__.
+O Docker tem uma plataforma de [plugins](https://docs.docker.com/engine/extend/){:target="_blank"} bem mais interessante que os [plugins do podman](https://github.com/containers/common/blob/main/docs/containers.conf.5.md#:~:text=A%20table%20of%20all%20the%20enabled%20volume%20plugins%20on%20the%20system.%20Volume%20plugins%20can%20be%20used%20as%20the%20backend%20for%20Podman%20named%20volumes.%20Individual%20plugins%20are%20specified%20below%2C%20as%20a%20map%20of%20the%20plugin%20name%20(what%20the%20plugin%20will%20be%20called)%20to%20its%20path%20(filepath%20of%20the%20plugin%27s%20unix%20socket).){:target="_blank"} em termos de facilidade de deploy de novas expansões. Não avaliei se o podman é capaz de rodar a mesma estrutura da [plugin API do Docker](https://docs.docker.com/engine/extend/plugin_api/){:target="_blank"} - deixando a sugestão ao leitor a possibilidade de buscar esta possibilidade - e quem sabe a publicar também. Esta plataforma de plugins será utilizada para __mapear em volumes Docker qualquer serviço suportado pelo Rclone__.
 
 ## Bora passar raiva? Booooooooraa!
 
 ### Pré-requisitos
 
-Para o procedimento, o paacote fuse se faz necessário. Nas duas bases mais comuns, o processo de instalação costuma ser o mesmo:
+Para o procedimento, o pacote fuse se faz necessário. Nas duas bases mais comuns, o processo de instalação costuma ser o mesmo:
 
 * `apt install fuse`
 * `yum install fuse`
@@ -76,15 +76,15 @@ Vou deixar propositalmente [os dois passos que já estão documentados pela equi
 
 ### Configurando os serviços
 
-A pasta onde o Rclone instala seu arquivo de config é a `/var/lib/docker-plugins/rclone/config/` e a configuração do Rclone é gerada pelo comando [`rclone config`](https://rclone.org/commands/rclone_config/). Juntando as duas coisas com um container pra configurar o Rclone (Afinal, pra que motivo iremos instalar via gerenciador de pacotes?), fica da seguinte forma:
+A pasta onde o Rclone instala seu arquivo de config é a `/var/lib/docker-plugins/rclone/config/` e a configuração do Rclone é gerada pelo comando [`rclone config`](https://rclone.org/commands/rclone_config/). Juntando as duas coisas com um contêiner pra configurar o Rclone (Afinal, pra que motivo iremos instalar via gerenciador de pacotes?), fica da seguinte forma:
 
 ```bash
-# Container para configurar o Rclone
+# Contêiner para configurar o Rclone
 
 docker run -it --rm --name rclone_config -v /var/lib/docker-plugins/rclone/config/:/config/rclone rclone/rclone config
 ```
 
-Nesta altura do campeonato, já fica posto que é possível usar variações do comando acima para fazer qualquer operação fora dos containers envolvendo os serviços configurados para os volumes do Docker, como por exemplo:
+Nesta altura do campeonato, já fica posto que é possível usar variações do comando acima para fazer qualquer operação fora dos contêineres envolvendo os serviços configurados para os volumes do Docker, como por exemplo:
 
 ```bash
 # Vamos listar os arquivos do serviço brasil_bagunca:
@@ -114,7 +114,7 @@ remote = brasilbagunca_compress:
 
 Criamos um perfil de acesso chamado _brasilbagunça_ que se conecta em um FTP. Como não tem como fazer hash e compressão no FTP, criamos um novo perfil de acesso chamado _brasilbagunca_compress_ que comprime os arquivos em gzip e envia para o remote _brasilbagunca_.
 
-__AVISO: O Rclone diz [explicitamente](https://rclone.org/compress/#:~:text=The%20file%20names%20should%20not%20be%20changed%20by%20anything%20other%20than%20the%20rclone%20compression%20backend.) que é possível acessar os arquivos e que modifica-los é perigoso! Não altere os arquivos gerados no destino! No lugar disso, veja acima o exemplo que usamos com _rclone ls_.__
+__AVISO: O Rclone diz [explicitamente](https://rclone.org/compress/#:~:text=The%20file%20names%20should%20not%20be%20changed%20by%20anything%20other%20than%20the%20rclone%20compression%20backend.) que é possível acessar os arquivos e que modificá-los é perigoso! Não altere os arquivos gerados no destino! No lugar disso, veja acima o exemplo que usamos com _rclone ls_.__
 
 E como FTP também não suporta hash remoto, adotamos o componente _hasher_ em cima do componente _compress_. O _hasher_ gera arquivos .json para cada arquivo enviado com o hash local e verifica este hash em funções como `copy`, `sync` e etc. 
 
@@ -129,7 +129,7 @@ docker run -it --rm --name rclone_config -v /var/lib/docker-plugins/rclone/confi
 
 ### Forjando um _docker-compose.yml_
 
-E chega a hora de juntar isso em uma configuração útil. Para manter os serviços o mais modular possível, utilizei o agendador [Ofelia](https://github.com/mcuadros/ofelia) - um sistema construído em Go que permite utilizar labels do Docker para parametrizar o agendador. O container [MariaDB](https://hub.docker.com/_/mariadb) é padrão e só tem a mais uma pasta de backup que será mapeada para o volume criado com o driver _rclone_. As rotinas e configurações do _job-exec_ podem ser consultadas [aqui](https://github.com/mcuadros/ofelia/blob/master/docs/jobs.md). Para os entendidos de _cron_ e _mysql_, os comandos serão intuitovos e não explicados neste artigo para não desviar demais.
+E chega a hora de juntar isso em uma configuração útil. Para manter os serviços o mais modular possível, utilizei o agendador [Ofelia](https://github.com/mcuadros/ofelia) - um sistema construído em Go que permite utilizar labels do Docker para parametrizar o agendador. O contêiner [MariaDB](https://hub.docker.com/_/mariadb) é padrão e só tem a mais uma pasta de backup que será mapeada para o volume criado com o driver _rclone_. As rotinas e configurações do _job-exec_ podem ser consultadas [aqui](https://github.com/mcuadros/ofelia/blob/master/docs/jobs.md). Para os entendidos de _cron_ e _mysql_, os comandos serão intuitivos e não explicados neste artigo para não desviar do tema do artigo.
 
 {% highlight yaml linenos %}
 version: '3.8'
@@ -180,11 +180,11 @@ Recomendo a leitura da página de informações sobre o [rclone mount](https://r
 
 ## Conclusão
 
-Este artigo visa mostrar o poder dos plugins do Docker e também indicar o poderoso _Rclone_. Os dois juntos podem ser uma excelente ferramenta para quem está convertendo estruturas on premisse sem containers para containers em qualquer formato - sem necessariamente mudar os paradígmas da solução existente. 
+Este artigo visa mostrar o poder dos plugins do Docker e também indicar o poderoso _Rclone_. Os dois juntos podem ser uma excelente ferramenta para quem está convertendo estruturas on premisse legadas para contêineres em qualquer formato - sem necessariamente mudar os paradigmas da solução existente. 
 
 Caso tenha dúvidas, sugestões ou alguma observação, dá um toque nos comentários abaixo ou nas redes sociais no menu acima!
 
-E nunca se esqueça, se for [fultonar](https://metalgear.fandom.com/wiki/Fulton_surface-to-air_recovery_system) um container, segure-se bem e aproveite a viagem! 
+E nunca se esqueça, se for [fultonar](https://metalgear.fandom.com/wiki/Fulton_surface-to-air_recovery_system) um contêiner, segure-se bem e aproveite a viagem! 
 
 ![Metal Gear Auto Extração via Fulton](/assets/images/mgs_fulton.jpg)
 
