@@ -6,7 +6,7 @@ categories: linux segurança token certisign
 vertical: Code
 excerpt: "Mais um capítulo da eterna briga entre usuários de Linux e usuários do ICP-Brasil com suas ACs que não gostam de suportar Linux."
 images:
-  - url: https://user-images.githubusercontent.com/201189/133657907-38fdcbba-b6a9-40e5-86ab-79e58c5a7325.png
+  - url: /assets/images/icp_brasil.png
     alt: ICP-Brasil
     title: ICP-Brasil
 comments: true
@@ -30,11 +30,11 @@ Em tempos de pandemia de [SARS-CoV-2](https://www.nature.com/articles/s41591-020
 
 O novo cartão me foi descrito como _"Cartão com o chip redondo"_ - [descrição relativamente adequada](https://www.blogs.unicamp.br/dimensional/2009/04/29/044/):
 
-![eCPF e cCNPJ Certisign Frente](https://user-images.githubusercontent.com/201189/133638260-67e91e98-e278-44b7-a89b-7d19607da898.jpeg)
+![eCPF e cCNPJ Certisign Frente](/assets/images/certisign_cartao_frente.jpg)
 
 Para quem tiver curiosidade, a parte traseira com a numeração de modelo/lote do cartão (Não é S/N, por isso envio a imagem)
 
-![eCPF/eCNPJ Costas](https://user-images.githubusercontent.com/201189/133639070-126ab97b-f989-4be6-b699-89c38ab2c659.jpg)
+![eCPF/eCNPJ Costas](/assets/images/certisign_cartao_costas.jpg)
 
 A identificação via pcsc_scan é:
 
